@@ -1,7 +1,14 @@
+import locales from "./src/locales";
+import currencies from "./src/currencies";
+
 export default {
   editor: {
     label: {
       en: "Number",
+    },
+    icon: "number-formating",
+    bubble: {
+      icon: "number-formating",
     },
     customSettingsPropertiesOrder: [
       "value",
@@ -40,8 +47,8 @@ export default {
         fr: "Locale",
       },
       type: "TextSelect",
-      options: () => {
-        return { options: window.wwLocalesList };
+      options: {
+        options: locales,
       },
       defaultValue: "en",
       section: "settings",
@@ -70,8 +77,8 @@ export default {
         fr: "Currency",
       },
       type: "TextSelect",
-      options: () => {
-        return { options: window.wwCurrenciesList };
+      options: {
+        options: currencies,
       },
       defaultValue: "USD",
       section: "settings",
@@ -197,7 +204,7 @@ export default {
         options: [
           { value: "long", label: "Long" },
           { value: "short", label: "Short" },
-          { value: "narrow", label: "Marrow" },
+          { value: "narrow", label: "Narrow" },
         ],
       },
       defaultValue: "short",

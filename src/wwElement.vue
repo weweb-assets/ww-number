@@ -1,15 +1,18 @@
 <template>
-  <!-- <wwElement v-bind="content.numberElement" :wwProps="{ text: value }" /> -->
-  {{ value }}
+  <div class="ww-number">
+    <wwElement v-bind="content.numberElement" :wwProps="{ text: value }" />
+  </div>
 </template>
 
 <script>
-import locales from "./locales";
-import currencies from "./currencies";
-
 export default {
   props: {
     content: { type: Object, required: true },
+  },
+  data() {
+    return {
+      datas: null,
+    };
   },
   computed: {
     value() {
@@ -33,44 +36,6 @@ export default {
 
       return new Intl.NumberFormat(locale, options).format(value);
     },
-  },
-  methods: {
-    initLocales() {
-      let wwLocalesList = [];
-
-      for (let locale of Object.keys(locales)) {
-        const value = locale.replaceAll("_", "-");
-        wwLocalesList.push({
-          value,
-          label: `${locales[locale]} (${value})`,
-        });
-      }
-
-      if (!_.isEqual(window.wwLocalesList, wwLocalesList)) {
-        window.wwLocalesList = wwLocalesList;
-      }
-    },
-    initCurencies() {
-      let wwCurrenciesList = [];
-
-      for (let currency of currencies) {
-        if (wwCurrenciesList.some((curr) => curr.label === currency.name))
-          continue;
-
-        wwCurrenciesList.push({
-          value: currency.code,
-          label: currency.name,
-        });
-      }
-
-      if (!_.isEqual(window.wwCurrenciesList, wwCurrenciesList)) {
-        window.wwCurrenciesList = wwCurrenciesList;
-      }
-    },
-  },
-  mounted() {
-    this.initLocales();
-    this.initCurencies();
   },
 };
 </script>
