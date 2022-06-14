@@ -6,9 +6,9 @@ export default {
     label: {
       en: "Number",
     },
-    icon: "number-formating",
+    icon: "number",
     bubble: {
-      icon: "number-formating",
+      icon: "number",
     },
     customSettingsPropertiesOrder: [
       "value",
@@ -24,10 +24,9 @@ export default {
       ],
       [
         "minimumIntegerDigits",
-        "minimumFractionDigits",
-        "maximumFractionDigits",
-        "minimumSignificantDigits",
-        "maximumSignificantDigits",
+        "fractionDigits",
+        "thousandsSeparator",
+        "convertion",
       ],
     ],
   },
@@ -52,6 +51,7 @@ export default {
       },
       defaultValue: "en",
       section: "settings",
+      bindable: true,
     },
     style: {
       label: {
@@ -64,7 +64,7 @@ export default {
           { value: "decimal", label: "Decimal" },
           { value: "currency", label: "Currency" },
           { value: "percent", label: "Percent" },
-          { value: "unit", label: "unit" },
+          { value: "unit", label: "Unit" },
         ],
       },
       defaultValue: "currency",
@@ -82,6 +82,7 @@ export default {
       },
       defaultValue: "USD",
       section: "settings",
+      bindable: true,
     },
     currencyDisplay: {
       hidden: (content) => content.style !== "currency",
@@ -101,7 +102,6 @@ export default {
       section: "settings",
     },
     notation: {
-      hidden: (content) => content.style !== "decimal",
       label: {
         en: "Notation",
         fr: "Notation",
@@ -111,29 +111,10 @@ export default {
         options: [
           { value: "standard", label: "Standard" },
           { value: "scientific", label: "Scientific" },
-          { value: "engineering", label: "Engineering" },
           { value: "compact", label: "Compact" },
         ],
       },
       defaultValue: "standard",
-      section: "settings",
-    },
-    signDisplay: {
-      hidden: (content) => content.style !== "decimal",
-      label: {
-        en: "Sign dysplay",
-        fr: "Sign dysplay",
-      },
-      type: "TextSelect",
-      options: {
-        options: [
-          { value: "auto", label: "Auto" },
-          { value: "never", label: "Never" },
-          { value: "always", label: "Always" },
-          { value: "exceptZero", label: "ExceptZero" },
-        ],
-      },
-      defaultValue: "auto",
       section: "settings",
     },
     unit: {
@@ -192,6 +173,7 @@ export default {
       },
       defaultValue: "celsius",
       section: "settings",
+      bindable: true,
     },
     unitDisplay: {
       hidden: (content) => content.style !== "unit",
@@ -222,57 +204,30 @@ export default {
       },
       defaultValue: 1,
       section: "settings",
+      bindable: true,
     },
-    minimumFractionDigits: {
+    fractionDigits: {
       type: "Number",
       label: {
-        en: "Minimum fraction digits",
-        fr: "Minimum fraction digits",
+        en: "Decimal places",
+        fr: "Decimal places",
       },
       options: {
         min: 0,
         max: 20,
       },
-      defaultValue: 0,
+      defaultValue: 2,
       section: "settings",
+      bindable: true,
     },
-    maximumFractionDigits: {
-      type: "Number",
+    thousandsSeparator: {
       label: {
-        en: "Maximum fraction digits",
-        fr: "Maximum fraction digits",
+        en: "1000 separator",
+        fr: "1000 separator",
       },
-      options: {
-        min: 0,
-        max: 20,
-      },
-      defaultValue: 3,
-      section: "settings",
-    },
-    minimumSignificantDigits: {
-      type: "Number",
-      label: {
-        en: "Minimum significant digits",
-        fr: "Minimum significant digits",
-      },
-      options: {
-        min: 1,
-        max: 21,
-      },
-      defaultValue: 1,
-      section: "settings",
-    },
-    maximumSignificantDigits: {
-      type: "Number",
-      label: {
-        en: "Maximum significant digits",
-        fr: "Maximum significant digits",
-      },
-      options: {
-        min: 1,
-        max: 21,
-      },
-      defaultValue: 21,
+      type: "OnOff",
+      defaultValue: true,
+      bindable: true,
       section: "settings",
     },
     numberElement: {

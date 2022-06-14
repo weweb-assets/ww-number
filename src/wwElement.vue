@@ -24,14 +24,12 @@ export default {
         currency: this.content.currency,
         currencyDisplay: this.content.currencyDisplay,
         notation: this.content.notation,
-        signDisplay: this.content.signDisplay,
         unit: this.content.unit,
         unitDisplay: this.content.unitDisplay,
         minimumIntegerDigits: this.content.minimumIntegerDigits,
-        minimumFractionDigits: this.content.minimumFractionDigits,
-        maximumFractionDigits: this.content.maximumFractionDigits,
-        minimumSignificantDigits: this.content.minimumSignificantDigits,
-        maximumSignificantDigits: this.content.maximumSignificantDigits,
+        minimumFractionDigits: this.content.fractionDigits,
+        maximumFractionDigits: this.content.fractionDigits,
+        useGrouping: this.content.thousandsSeparator,
       };
 
       return new Intl.NumberFormat(locale, options).format(value);

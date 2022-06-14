@@ -35,7 +35,6 @@ export default [
   { value: "CAD", label: "Canadian Dollar" },
   { value: "KYD", label: "Cayman Islands Dollar" },
   { value: "CLP", label: "Chilean Peso" },
-  { value: "CLF", label: { "-IsFund": "true", "#text": "Unidad de Fomento" } },
   { value: "CNY", label: "Yuan Renminbi" },
   { value: "COP", label: "Colombian Peso" },
   { value: "KMF", label: "Comorian Franc " },
