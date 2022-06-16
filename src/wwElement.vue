@@ -24,7 +24,7 @@ export default {
         options: { ...this.content.options, locale },
       });
     },
-    "content.unit"(locale) {
+    "content.unit"(unit) {
       this.$emit("update:content:effect", {
         options: { ...this.content.options, unit },
       });
