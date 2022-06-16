@@ -1,7 +1,5 @@
 <template>
-  <div class="ww-number">
-    <wwElement v-bind="content.numberElement" :wwProps="{ text: value }" />
-  </div>
+  <wwText class="ww-number" :text="`${value}`"></wwText>
 </template>
 
 <script>
@@ -17,7 +15,6 @@ export default {
   computed: {
     value() {
       const value = this.content.value;
-      const locale = this.content.locale;
       const options = {
         style: this.content.style,
         currency: this.content.currency,
@@ -30,7 +27,13 @@ export default {
         maximumFractionDigits: this.content.fractionDigits,
         useGrouping: this.content.thousandsSeparator,
       };
-      return new Intl.NumberFormat(locale, options).format(value);
+
+      return new Intl.NumberFormat(this.locale, options).format(value);
+    },
+    locale() {
+      return this.content.locale === "ww-project-lang"
+        ? wwLib.$store.getters["front/getLang"]
+        : this.content.locale;
     },
   },
 };

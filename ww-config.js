@@ -1,7 +1,16 @@
+import { computed } from "vue";
+
+/* wwEditor:start */
 import locales from "./src/locales";
 import currencies from "./src/currencies";
+locales.unshift({ label: "Project lang", value: "ww-project-lang" });
+/* wwEditor:end */
 
 export default {
+  inherit: {
+    type: "ww-text",
+    exclude: ["text"],
+  },
   editor: {
     label: {
       en: "Number",
@@ -49,7 +58,10 @@ export default {
       options: {
         options: locales,
       },
-      defaultValue: "en",
+      options: {
+        options: locales,
+      },
+      defaultValue: "ww-project-lang",
       section: "settings",
       bindable: true,
     },
@@ -229,10 +241,6 @@ export default {
       defaultValue: true,
       bindable: true,
       section: "settings",
-    },
-    numberElement: {
-      hidden: true,
-      defaultValue: { isWwObject: true, type: "ww-text" },
     },
   },
 };
