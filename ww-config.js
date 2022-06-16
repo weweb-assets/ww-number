@@ -1,5 +1,3 @@
-import { computed } from "vue";
-
 /* wwEditor:start */
 import locales from "./src/locales";
 import currencies from "./src/currencies";
@@ -129,6 +127,7 @@ export default {
       defaultValue: "standard",
       section: "settings",
     },
+    /* wwEditor:start */
     unit: {
       hidden: (content) => content.style !== "unit",
       label: {
@@ -187,6 +186,7 @@ export default {
       section: "settings",
       bindable: true,
     },
+    /* wwEditor:end */
     unitDisplay: {
       hidden: (content) => content.style !== "unit",
       label: {
@@ -241,6 +241,14 @@ export default {
       defaultValue: true,
       bindable: true,
       section: "settings",
+    },
+    options: {
+      hidden: true,
+      defaultValue: {
+        locale: "ww-project-lang",
+        currency: "USD",
+        unit: "celsius",
+      },
     },
   },
 };
