@@ -35,10 +35,10 @@ export default {
       const value = this.content.value;
       const options = {
         style: this.content.style,
-        currency: this.options.currency,
+        currency: this.content.options.currency,
         currencyDisplay: this.content.currencyDisplay,
         notation: this.content.notation,
-        unit: this.options.unit,
+        unit: this.content.options.unit,
         unitDisplay: this.content.unitDisplay,
         minimumIntegerDigits: this.content.minimumIntegerDigits,
         minimumFractionDigits: this.content.fractionDigits,
@@ -49,9 +49,9 @@ export default {
       return new Intl.NumberFormat(this.locale, options).format(value);
     },
     locale() {
-      return this.options.locale === "ww-project-lang"
+      return this.content.options.locale === "ww-project-lang"
         ? wwLib.$store.getters["front/getLang"]
-        : this.options.locale;
+        : this.content.options.locale;
     },
   },
 };
