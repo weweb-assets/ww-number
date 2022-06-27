@@ -47,6 +47,7 @@ export default {
       defaultValue: 3.14159,
       section: "settings",
     },
+    /* wwEditor:start */
     locale: {
       label: {
         en: "Locale",
@@ -63,6 +64,7 @@ export default {
       section: "settings",
       bindable: true,
     },
+    /* wwEditor:end */
     style: {
       label: {
         en: "Style",
@@ -80,6 +82,7 @@ export default {
       defaultValue: "currency",
       section: "settings",
     },
+    /* wwEditor:start */
     currency: {
       hidden: (content) => content.style !== "currency",
       label: {
@@ -94,6 +97,7 @@ export default {
       section: "settings",
       bindable: true,
     },
+    /* wwEditor:end */
     currencyDisplay: {
       hidden: (content) => content.style !== "currency",
       label: {
