@@ -1,7 +1,7 @@
 /* wwEditor:start */
 import locales from "./src/locales";
 import currencies from "./src/currencies";
-locales.unshift({ label: "Project lang", value: "ww-project-lang" });
+locales.unshift({ label: "Page lang", value: "ww-project-lang" });
 /* wwEditor:end */
 
 export default {
