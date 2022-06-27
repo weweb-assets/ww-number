@@ -47,7 +47,6 @@ export default {
       defaultValue: 3.14159,
       section: "settings",
     },
-    /* wwEditor:start */
     locale: {
       label: {
         en: "Locale",
@@ -63,8 +62,8 @@ export default {
       defaultValue: "ww-project-lang",
       section: "settings",
       bindable: true,
+      editorOnly: true,
     },
-    /* wwEditor:end */
     style: {
       label: {
         en: "Style",
@@ -82,7 +81,6 @@ export default {
       defaultValue: "currency",
       section: "settings",
     },
-    /* wwEditor:start */
     currency: {
       hidden: (content) => content.style !== "currency",
       label: {
@@ -96,8 +94,8 @@ export default {
       defaultValue: "USD",
       section: "settings",
       bindable: true,
+      editorOnly: true,
     },
-    /* wwEditor:end */
     currencyDisplay: {
       hidden: (content) => content.style !== "currency",
       label: {
@@ -131,7 +129,6 @@ export default {
       defaultValue: "standard",
       section: "settings",
     },
-    /* wwEditor:start */
     unit: {
       hidden: (content) => content.style !== "unit",
       label: {
@@ -189,8 +186,8 @@ export default {
       defaultValue: "celsius",
       section: "settings",
       bindable: true,
+      editorOnly: true,
     },
-    /* wwEditor:end */
     unitDisplay: {
       hidden: (content) => content.style !== "unit",
       label: {
