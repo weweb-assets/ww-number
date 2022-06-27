@@ -14,6 +14,7 @@ export default {
     };
   },
   watch: {
+    /* wwEditor:start */
     "content.currency"(currency) {
       this.$emit("update:content:effect", {
         options: { ...this.content.options, currency },
@@ -29,6 +30,7 @@ export default {
         options: { ...this.content.options, unit },
       });
     },
+    /* wwEditor:end */
   },
   computed: {
     value() {
