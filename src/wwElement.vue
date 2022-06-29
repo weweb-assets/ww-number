@@ -6,6 +6,9 @@
 export default {
   props: {
     content: { type: Object, required: true },
+    /* wwEditor:start */
+    wwEditorState: { type: Object, required: true },
+    /* wwEditor:end */
   },
   emits: ["update:content:effect"],
   data() {
@@ -14,21 +17,23 @@ export default {
     };
   },
   watch: {
-    "content.currency"(currency) {
+    /* wwEditor:start */
+    "wwEditorState.sidepanelContent.currency"(currency) {
       this.$emit("update:content:effect", {
         options: { ...this.content.options, currency },
       });
     },
-    "content.locale"(locale) {
+    "wwEditorState.sidepanelContent.locale"(locale) {
       this.$emit("update:content:effect", {
         options: { ...this.content.options, locale },
       });
     },
-    "content.unit"(unit) {
+    "wwEditorState.sidepanelContent.unit"(unit) {
       this.$emit("update:content:effect", {
         options: { ...this.content.options, unit },
       });
     },
+    /* wwEditor:end */
   },
   computed: {
     value() {

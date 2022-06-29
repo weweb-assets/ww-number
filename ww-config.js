@@ -1,7 +1,7 @@
 /* wwEditor:start */
 import locales from "./src/locales";
 import currencies from "./src/currencies";
-locales.unshift({ label: "Project lang", value: "ww-project-lang" });
+locales.unshift({ label: "Page lang", value: "ww-project-lang" });
 /* wwEditor:end */
 
 export default {
@@ -62,6 +62,7 @@ export default {
       defaultValue: "ww-project-lang",
       section: "settings",
       bindable: true,
+      editorOnly: true,
     },
     style: {
       label: {
@@ -93,6 +94,7 @@ export default {
       defaultValue: "USD",
       section: "settings",
       bindable: true,
+      editorOnly: true,
     },
     currencyDisplay: {
       hidden: (content) => content.style !== "currency",
@@ -127,7 +129,6 @@ export default {
       defaultValue: "standard",
       section: "settings",
     },
-    /* wwEditor:start */
     unit: {
       hidden: (content) => content.style !== "unit",
       label: {
@@ -185,8 +186,8 @@ export default {
       defaultValue: "celsius",
       section: "settings",
       bindable: true,
+      editorOnly: true,
     },
-    /* wwEditor:end */
     unitDisplay: {
       hidden: (content) => content.style !== "unit",
       label: {
