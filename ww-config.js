@@ -46,6 +46,13 @@ export default {
       bindable: true,
       defaultValue: 3.14159,
       section: "settings",
+      /* wwEditor:start */
+      bindingValidation: {
+        type: "number",
+        tooltip:
+          "A number that defines the element value: `42 | 42.00 | 0.042`",
+      },
+      /* wwEditor:end */
     },
     /* wwEditor:start */
     locale: {
@@ -64,6 +71,11 @@ export default {
       section: "settings",
       bindable: true,
       editorOnly: true,
+      bindingValidation: {
+        type: "string",
+        tooltip:
+          'A string that defines the locale code: `"en" | "es" | "fr"` of `"ww-project-lang"` for the current page ',
+      },
     },
     /* wwEditor:end */
     style: {
