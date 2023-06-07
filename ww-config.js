@@ -100,7 +100,7 @@ export default {
       type: "TextSelect",
       /* wwEditor:start */
       options: {
-        options: currencies,
+        options: currencies.map(cur => ({label: `${cur.value} - ${cur.label}`, value: cur.value})),
       },
       /* wwEditor:end */
       defaultValue: "USD",

@@ -21,10 +21,10 @@ export default {
       const value = this.content.value;
       const options = {
         style: this.content.style,
-        currency: this.content.currency,
+        currency: this.currency,
         currencyDisplay: this.content.currencyDisplay,
         notation: this.content.notation,
-        unit: this.content.unit,
+        unit: this.unit,
         unitDisplay: this.content.unitDisplay,
         minimumIntegerDigits: this.content.minimumIntegerDigits,
         minimumFractionDigits: this.content.fractionDigits,
@@ -39,6 +39,12 @@ export default {
         ? wwLib.$store.getters["front/getLang"]
         : this.content.locale;
     },
+    currency() {
+      return this.content.currency && typeof this.content.currency === 'string' ? this.content.currency : 'USD'
+    },
+    unit() {
+      return this.content.unit && typeof this.content.unit === 'string' ? this.content.unit : 'celsius'
+    }
   },
 };
 </script>
