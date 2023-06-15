@@ -16,6 +16,16 @@ export default {
       datas: null,
     };
   },
+  /* wwEditor:start */
+  watch: {
+    'content.style'() {
+      this.$emit('update:content:effect', {
+        currency: 'USD',
+        unit: 'celsius',
+      });
+    }
+  },
+  /* wwEditor:end */
   computed: {
     value() {
       const value = this.content.value;
@@ -32,7 +42,11 @@ export default {
         useGrouping: this.content.thousandsSeparator,
       };
 
-      return new Intl.NumberFormat(this.locale, options).format(value);
+      try {
+        return new Intl.NumberFormat(this.locale, options).format(value);
+      } catch (error) {
+        return new Intl.NumberFormat(this.locale, {...options, currency: 'USD', unit: 'celsius'}).format(value);
+      }
     },
     locale() {
       return this.content.locale === "ww-project-lang"
