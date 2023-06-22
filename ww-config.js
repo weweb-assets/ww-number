@@ -54,30 +54,26 @@ export default {
       },
       /* wwEditor:end */
     },
-    /* wwEditor:start */
     locale: {
       label: {
         en: "Locale",
         fr: "Locale",
       },
       type: "TextSelect",
+      /* wwEditor:start */
       options: {
         options: locales,
       },
-      options: {
-        options: locales,
-      },
+      /* wwEditor:end */
       defaultValue: "ww-project-lang",
       section: "settings",
       bindable: true,
-      editorOnly: true,
       bindingValidation: {
         type: "string",
         tooltip:
           'A string that defines the locale code: `"en" | "es" | "fr"` of `"ww-project-lang"` for the current page ',
       },
     },
-    /* wwEditor:end */
     style: {
       label: {
         en: "Style",
@@ -95,7 +91,6 @@ export default {
       defaultValue: "currency",
       section: "settings",
     },
-    /* wwEditor:start */
     currency: {
       hidden: (content) => content.style !== "currency",
       label: {
@@ -103,15 +98,15 @@ export default {
         fr: "Currency",
       },
       type: "TextSelect",
+      /* wwEditor:start */
       options: {
-        options: currencies,
+        options: currencies.map(cur => ({label: `${cur.value} - ${cur.label}`, value: cur.value})),
       },
+      /* wwEditor:end */
       defaultValue: "USD",
       section: "settings",
       bindable: true,
-      editorOnly: true,
     },
-    /* wwEditor:end */
     currencyDisplay: {
       hidden: (content) => content.style !== "currency",
       label: {
@@ -152,6 +147,7 @@ export default {
         fr: "Unit",
       },
       type: "TextSelect",
+      /* wwEditor:start */
       options: {
         options: [
           { value: "acre", label: "acre" },
@@ -199,10 +195,10 @@ export default {
           { value: "year", label: "year" },
         ],
       },
+      /* wwEditor:end */
       defaultValue: "celsius",
       section: "settings",
       bindable: true,
-      editorOnly: true,
     },
     unitDisplay: {
       hidden: (content) => content.style !== "unit",
@@ -258,14 +254,6 @@ export default {
       defaultValue: true,
       bindable: true,
       section: "settings",
-    },
-    options: {
-      hidden: true,
-      defaultValue: {
-        locale: "ww-project-lang",
-        currency: "USD",
-        unit: "celsius",
-      },
     },
   },
 };

@@ -16,34 +16,25 @@ export default {
       datas: null,
     };
   },
+  /* wwEditor:start */
   watch: {
-    /* wwEditor:start */
-    "wwEditorState.sidepanelContent.currency"(currency) {
-      this.$emit("update:content:effect", {
-        options: { ...this.content.options, currency },
+    'content.style'() {
+      this.$emit('update:content:effect', {
+        currency: 'USD',
+        unit: 'celsius',
       });
-    },
-    "wwEditorState.sidepanelContent.locale"(locale) {
-      this.$emit("update:content:effect", {
-        options: { ...this.content.options, locale },
-      });
-    },
-    "wwEditorState.sidepanelContent.unit"(unit) {
-      this.$emit("update:content:effect", {
-        options: { ...this.content.options, unit },
-      });
-    },
-    /* wwEditor:end */
+    }
   },
+  /* wwEditor:end */
   computed: {
     value() {
       const value = this.content.value;
       const options = {
         style: this.content.style,
-        currency: this.content.options.currency,
+        currency: this.currency,
         currencyDisplay: this.content.currencyDisplay,
         notation: this.content.notation,
-        unit: this.content.options.unit,
+        unit: this.unit,
         unitDisplay: this.content.unitDisplay,
         minimumIntegerDigits: this.content.minimumIntegerDigits,
         minimumFractionDigits: this.content.fractionDigits,
@@ -51,13 +42,23 @@ export default {
         useGrouping: this.content.thousandsSeparator,
       };
 
-      return new Intl.NumberFormat(this.locale, options).format(value);
+      try {
+        return new Intl.NumberFormat(this.locale, options).format(value);
+      } catch (error) {
+        return new Intl.NumberFormat(this.locale, {...options, currency: 'USD', unit: 'celsius'}).format(value);
+      }
     },
     locale() {
-      return this.content.options.locale === "ww-project-lang"
+      return this.content.locale === "ww-project-lang"
         ? wwLib.$store.getters["front/getLang"]
-        : this.content.options.locale;
+        : this.content.locale;
     },
+    currency() {
+      return this.content.currency && typeof this.content.currency === 'string' ? this.content.currency : 'USD'
+    },
+    unit() {
+      return this.content.unit && typeof this.content.unit === 'string' ? this.content.unit : 'celsius'
+    }
   },
 };
 </script>
