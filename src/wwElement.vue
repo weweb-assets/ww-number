@@ -50,7 +50,7 @@ export default {
     },
     locale() {
       return this.content.locale === "ww-project-lang"
-        ? wwLib.$store.getters["front/getLang"]
+        ? wwLib.wwLang.lang
         : this.content.locale;
     },
     currency() {
